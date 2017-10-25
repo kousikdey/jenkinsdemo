@@ -1,7 +1,7 @@
 @if "%DEBUG%" == "" @echo off
 @rem ##########################################################################
 @rem
-@rem  complete startup script for Windows
+@rem  JenkinsDemo startup script for Windows
 @rem
 @rem ##########################################################################
 
@@ -13,7 +13,7 @@ if "%DIRNAME%" == "" set DIRNAME=.
 set APP_BASE_NAME=%~n0
 set APP_HOME=%DIRNAME%..
 
-@rem Add default JVM options here. You can also use JAVA_OPTS and COMPLETE_OPTS to pass JVM options to this script.
+@rem Add default JVM options here. You can also use JAVA_OPTS and JENKINS_DEMO_OPTS to pass JVM options to this script.
 set DEFAULT_JVM_OPTS=
 
 @rem Find java.exe
@@ -49,7 +49,6 @@ goto fail
 @rem Get command-line arguments, handling Windows variants
 
 if not "%OS%" == "Windows_NT" goto win9xME_args
-if "%@eval[2+2]" == "4" goto 4NT_args
 
 :win9xME_args
 @rem Slurp the command line arguments.
@@ -60,28 +59,23 @@ set _SKIP=2
 if "x%~1" == "x" goto execute
 
 set CMD_LINE_ARGS=%*
-goto execute
-
-:4NT_args
-@rem Get arguments from the 4NT Shell from JP Software
-set CMD_LINE_ARGS=%$
 
 :execute
 @rem Setup the command line
 
 set CLASSPATH=%APP_HOME%\lib\gs-gradle-0.1.0.jar;%APP_HOME%\lib\joda-time-2.2.jar
 
-@rem Execute complete
-"%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %COMPLETE_OPTS%  -classpath "%CLASSPATH%" hello.HelloWorld %CMD_LINE_ARGS%
+@rem Execute JenkinsDemo
+"%JAVA_EXE%" %DEFAULT_JVM_OPTS% %JAVA_OPTS% %JENKINS_DEMO_OPTS%  -classpath "%CLASSPATH%" hello.HelloWorld %CMD_LINE_ARGS%
 
 :end
 @rem End local scope for the variables with windows NT shell
 if "%ERRORLEVEL%"=="0" goto mainEnd
 
 :fail
-rem Set variable COMPLETE_EXIT_CONSOLE if you need the _script_ return code instead of
+rem Set variable JENKINS_DEMO_EXIT_CONSOLE if you need the _script_ return code instead of
 rem the _cmd.exe /c_ return code!
-if  not "" == "%COMPLETE_EXIT_CONSOLE%" exit 1
+if  not "" == "%JENKINS_DEMO_EXIT_CONSOLE%" exit 1
 exit /b 1
 
 :mainEnd
